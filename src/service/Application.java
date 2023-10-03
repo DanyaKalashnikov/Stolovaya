@@ -20,7 +20,6 @@ public class Application {
 
         List<Demonstrate> list = new ArrayList<>();
 
-
         Scanner scanner = new Scanner(System.in);
 
         while (true){
