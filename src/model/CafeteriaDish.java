@@ -33,17 +33,17 @@ public class CafeteriaDish implements Demonstrate {
         this.cafName = cafName;
     }
 
-    public CafeteriaDish(Dish dish, Cafeteria cafeteria) {
-        this.id = (int)(Math.random()*1000);
+    public CafeteriaDish(Cafeteria cafeteria, Dish dish) {
+        this.id = (int) (Math.random() * 1000);
         this.dishId = dish.getDishId();
         this.dishName = dish.getDishName();
         this.cafId = cafeteria.getCafId();
         this.cafName = cafeteria.getCafName();
     }
 
-     public CafeteriaDish() {
-         this.id = (int) (Math.random() * 1000);
-     }
+    public CafeteriaDish() {
+        this.id = (int) (Math.random() * 1000);
+    }
 
     public int getDishId() {
         return dishId;

@@ -8,13 +8,13 @@ public class Dish implements Demonstrate {
     private int dishPrice;
 
     public Dish(String dishName, int dishPrice) {
-        this.dishId = (int)(Math.random()*1000);
+        this.dishId = (int) (Math.random() * 1000);
         this.dishName = dishName;
         this.dishPrice = dishPrice;
     }
 
-    public Dish(){
-        this.dishId = (int)(Math.random()*1000);
+    public Dish() {
+        this.dishId = (int) (Math.random() * 1000);
     }
 
     public int getDishId() {

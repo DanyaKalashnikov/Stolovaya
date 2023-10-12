@@ -8,17 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CafeteriaDishRepo implements Repository<CafeteriaDish>{
-    private final String id = "cd";
     private List<CafeteriaDish> cafeteriaDishes = new ArrayList<>();
 
     @Override
     public List<CafeteriaDish> getAllEntity() {
         return cafeteriaDishes;
-    }
-
-    @Override
-    public String getRepoId() {
-        return id;
     }
 
     @Override

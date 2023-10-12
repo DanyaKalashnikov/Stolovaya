@@ -1,7 +1,7 @@
 package utils;
 
 public class Menu {
-    public static void showMainMenu(){
+    public static void showMainMenu() {
         System.out.println("Выберите пункт: ");
         System.out.println("     Показать:");
         System.out.println("        11. Все кафетерии");

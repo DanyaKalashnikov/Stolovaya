@@ -6,18 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CafeteriaRepo implements Repository<Cafeteria> {
-    private final String id = "c";
     private List<Cafeteria> cafeterias = new ArrayList<>();
 
 
     @Override
     public List<Cafeteria> getAllEntity() {
         return cafeterias;
-    }
-
-    @Override
-    public String getRepoId() {
-        return id;
     }
 
     @Override

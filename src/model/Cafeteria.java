@@ -8,13 +8,13 @@ public class Cafeteria implements Demonstrate {
     private String cafAddres;
 
     public Cafeteria(String cafName, String cafAddres) {
-        this.cafId = (int) (Math.random()*1000);
+        this.cafId = (int) (Math.random() * 1000);
         this.cafName = cafName;
         this.cafAddres = cafAddres;
     }
 
-    public Cafeteria(){
-        this.cafId = (int)(Math.random()*1000);
+    public Cafeteria() {
+        this.cafId = (int) (Math.random() * 1000);
     }
 
     public int getCafId() {

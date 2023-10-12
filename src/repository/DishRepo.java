@@ -6,17 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DishRepo implements Repository<Dish>{
-    private final String id = "d";
-    List<Dish> dishes = new ArrayList<>();
+    private List<Dish> dishes = new ArrayList<>();
 
     @Override
-    public List getAllEntity() {
+    public List<Dish> getAllEntity() {
         return dishes;
-    }
-
-    @Override
-    public String getRepoId() {
-        return id;
     }
 
     @Override
