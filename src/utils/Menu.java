@@ -11,6 +11,9 @@ public class Menu {
         System.out.println("        21. Кафетерий");
         System.out.println("        22. Блюдо");
         System.out.println("        23. Блюдо в кафетерий");
-        System.out.println("     3.Выйти");
+        System.out.println("     Удалить: ");
+        System.out.println("        31. Кафетерий");
+        System.out.println("        32. Блюдо");
+        System.out.println("     4.Выйти");
     }
 }

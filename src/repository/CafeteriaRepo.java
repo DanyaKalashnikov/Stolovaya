@@ -23,10 +23,11 @@ public class CafeteriaRepo implements Repository<Cafeteria> {
     }
 
     @Override
-    public void deleteEntityById(int id) {
-        for (Cafeteria caf : cafeterias){
+    public void deleteEntity(Cafeteria entity) {
+        /*for (Cafeteria caf : cafeterias){
             if(caf.getCafId() == id) cafeterias.remove(caf);
-        }
+        }*/
+        cafeterias.remove(entity);
     }
 
     @Override

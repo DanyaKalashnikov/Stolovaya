@@ -7,7 +7,7 @@ public interface Repository<T> {
 
     T getEntityById(int id);
 
-    void deleteEntityById(int id);
+    void deleteEntity(T entity);
 
     void saveEntity(T entity);
 }

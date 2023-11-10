@@ -4,19 +4,21 @@ import model.Cafeteria;
 import model.CafeteriaDish;
 import model.Dish;
 import repository.CafeteriaDishRepo;
-import repository.CafeteriaRepo;
-import repository.DishRepo;
-import repository.Repository;
-import utils.Demonstrate;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CafeteriaDishService implements Service {
     private CafeteriaDishRepo cafeteriaDishRepo;
+    private CafeteriaService cafeService;
+    private DishService dishService;
 
     public CafeteriaDishService(CafeteriaDishRepo cafeDishRepo, CafeteriaService cafeService, DishService dishService) {
         init(cafeDishRepo, cafeService, dishService);
         this.cafeteriaDishRepo = cafeDishRepo;
+        this.cafeService = cafeService;
+        this.dishService = dishService;
+
     }
 
     public void init(CafeteriaDishRepo cafeDishRepo, CafeteriaService cafeService, DishService dishService) {
@@ -26,44 +28,59 @@ public class CafeteriaDishService implements Service {
         cafeDishRepo.saveEntity(cafeteriaDish);
     }
 
-    @Override
-    public void demonstrate() {
-        for (Demonstrate demo : cafeteriaDishRepo.getAllEntity()) demo.demonstrate();
+    public CafeteriaService getCafeService() {
+        return cafeService;
     }
 
-    public void addCafeteriaDishRepo(CafeteriaService cafeteriaService, DishService dishService) {
-        Scanner scanner = new Scanner(System.in);
+    public DishService getDishService() {
+        return dishService;
+    }
+
+    @Override
+    public List<CafeteriaDish> demonstrate() {
+        return cafeteriaDishRepo.getAllEntity();
+    }
+
+    @Override
+    public void add(String one, String two) {
         Dish dish;
         Cafeteria cafeteria;
         CafeteriaDish cafeteriaDish = new CafeteriaDish();
 
-        System.out.println("Выберите существующий кафетерий:");
-
-        cafeteriaService.demonstrate();
-
-        System.out.println("Введите индекс кафетерия:");
-        int cafId = scanner.nextInt();
-
-        System.out.println("Выберите существующее блюдо:");
-
-        dishService.demonstrate();
-
-        System.out.println("Введите индекс блюда:");
-        int dishId = scanner.nextInt();
-
-        cafeteria = cafeteriaService.getCafeRepo().getEntityById(cafId);
-        dish = dishService.getDishRepo().getEntityById(dishId);
+        cafeteria = cafeService.getCafeRepo().getEntityById(Integer.parseInt(one));
+        dish = dishService.getDishRepo().getEntityById(Integer.parseInt(two));
 
         cafeteriaDish.setCafId(cafeteria.getCafId());
         cafeteriaDish.setCafName(cafeteria.getCafName());
         cafeteriaDish.setDishId(dish.getDishId());
         cafeteriaDish.setDishName(dish.getDishName());
         cafeteriaDishRepo.saveEntity(cafeteriaDish);
-        System.out.println("Успешно!");
     }
 
     @Override
-    public void add() {
+    public void delete() {
 
+    }
+
+    public void deleteCafebyId(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите id кафетерия для удаления:");
+        int id = scanner.nextInt();
+        for (CafeteriaDish cafeteriaDish : cafeteriaDishRepo.getAllEntity()){
+            if(cafeteriaDish.getCafId() == id) {
+                cafeteriaDishRepo.deleteEntity(cafeteriaDish);
+            }
+        }
+    }
+
+    public void deleteDishbyId(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите id блюда для удаления:");
+        int id = scanner.nextInt();
+        for (CafeteriaDish cafeteriaDish : cafeteriaDishRepo.getAllEntity()){
+            if(cafeteriaDish.getDishId() == id) {
+                cafeteriaDishRepo.deleteEntity(cafeteriaDish);
+            }
+        }
     }
 }

@@ -22,11 +22,11 @@ public class DishRepo implements Repository<Dish>{
     }
 
     @Override
-    public void deleteEntityById(int id) {
-        for (Dish dish : dishes){
-            if (dish.getDishId() == id) dishes.remove(dish);
-        }
+    public void deleteEntity(Dish entity) {
+        dishes.remove(entity);
     }
+
+
 
     @Override
     public void saveEntity(Dish entity) {

@@ -1,5 +1,8 @@
 package service;
 
+import View.CafeteriaDishView;
+import View.CafeteriaView;
+import View.DishView;
 import model.Cafeteria;
 import model.CafeteriaDish;
 import model.Dish;
@@ -22,6 +25,9 @@ public class Application {
         DishService dishService = new DishService(dishRepo);
         CafeteriaDishRepo cafeteriaDishRepo = new CafeteriaDishRepo();
         CafeteriaDishService cafeteriaDishService = new CafeteriaDishService(cafeteriaDishRepo, cafeService, dishService);
+        CafeteriaView cafeView = new CafeteriaView(cafeService);
+        DishView dishView = new DishView(dishService);
+        CafeteriaDishView cafeDishView = new CafeteriaDishView(cafeteriaDishService, cafeView, dishView);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -31,27 +37,32 @@ public class Application {
 
             switch (a) {
                 case 11:
-                    cafeService.demonstrate();
+                    cafeView.demonstrate();
                     break;
                 case 12:
-                    dishService.demonstrate();
+                    dishView.demonstrate();
                     break;
                 case 13:
-                    cafeteriaDishService.demonstrate();
+                    cafeDishView.demonstrate();
                     break;
                 case 21:
-                    cafeService.add();
+                    cafeView.add();
                     break;
-
                 case 22:
-                    dishService.add();
+                    dishView.add();
                     break;
-
                 case 23:
-                    cafeteriaDishService.addCafeteriaDishRepo(cafeService, dishService);
+                    cafeDishView.add();
                     break;
-
-                case 3:
+                case 31:
+                    cafeService.delete();
+                    cafeteriaDishService.deleteCafebyId();
+                    break;
+                case 32:
+                    dishService.delete();
+                    cafeteriaDishService.deleteDishbyId();
+                    break;
+                case 4:
                     System.exit(3);
             }
         }

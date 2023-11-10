@@ -22,19 +22,18 @@ public class CafeteriaDishRepo implements Repository<CafeteriaDish>{
         }
         return null;
     }
+
+    @Override
+    public void deleteEntity(CafeteriaDish entity) {
+        cafeteriaDishes.remove(entity);
+    }
+
     public CafeteriaDish getEntityByCafetDishId(Cafeteria caf, Dish dish){
         for (CafeteriaDish cafeteriaDish : cafeteriaDishes){
             if(cafeteriaDish.getCafId() == caf.getCafId() &&
                     cafeteriaDish.getDishId() == dish.getDishId()) return cafeteriaDish;
         }
         return null;
-    }
-
-    @Override
-    public void deleteEntityById(int id) {
-        for (CafeteriaDish cafeteriaDish : cafeteriaDishes){
-            if (cafeteriaDish.getId() == id) cafeteriaDishes.remove(cafeteriaDish);
-        }
     }
 
     @Override

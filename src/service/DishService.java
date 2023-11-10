@@ -2,8 +2,8 @@ package service;
 
 import model.Dish;
 import repository.DishRepo;
-import utils.Demonstrate;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class DishService implements Service {
@@ -24,20 +24,22 @@ public class DishService implements Service {
     }
 
     @Override
-    public void demonstrate() {
-        for (Demonstrate demo : dishRepo.getAllEntity()) demo.demonstrate();
+    public List demonstrate() {
+        return dishRepo.getAllEntity();
     }
 
     @Override
-    public void add() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите название блюда:");
-        String dishName = scanner.next();
-        System.out.println("Введите его цену:");
-        scanner.nextLine();
-        int dishPrice = scanner.nextInt();
+    public void add(String one, String two) {
+        dishRepo.saveEntity(new Dish(one, Integer.parseInt(two)));
+    }
 
-        dishRepo.saveEntity(new Dish(dishName, dishPrice));
-        System.out.println("Успешно");
+    @Override
+    public void delete() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите id блюда для удаления:");
+        int id = scanner.nextInt();
+        for (Dish dish : dishRepo.getAllEntity()){
+            if(dish.getDishId() == id) dishRepo.deleteEntity(dish);
+        }
     }
 }
